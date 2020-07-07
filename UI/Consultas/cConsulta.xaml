@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SegundoParcial.UI.Consultas"
         mc:Ignorable="d"
-        Title="cConsulta" Height="460" Width="650">
+        Title="Consulta de Proyectos" Height="500" Width="650">
     <Grid>
-        <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="29*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Margin="60,5,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" Height="58">
                 <StackPanel>
                     <Label Content="Desde:"/>
@@ -41,9 +45,9 @@
                 </StackPanel>
 
             </StackPanel>
-            
+
             <StackPanel>
-                
+
                 <StackPanel HorizontalAlignment="Left">
                     <DataGrid x:Name="DatosDataGrid" Height="360" Width="530"/>
                 </StackPanel>

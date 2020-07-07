@@ -13,12 +13,12 @@ namespace SegundoParcial.BLL
 
         public static Tareas Buscar(int id)
         {
-            Tareas tareas;
+            Tareas tarea;
             Contexto contexto = new Contexto();
 
             try
             {
-                tareas = contexto.Tareas.Find(id);
+                tarea = contexto.Tareas.Find(id);
 
             }
             catch(Exception)
@@ -29,6 +29,29 @@ namespace SegundoParcial.BLL
             {
                 contexto.Dispose();
             }
+
+            return tarea;
+        }
+
+        public static List<Tareas> GetTareas()
+        {
+            List<Tareas> lista = new List<Tareas>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                lista = contexto.Tareas.ToList();
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return lista;
         }
     }
 }

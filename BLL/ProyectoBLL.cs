@@ -5,6 +5,7 @@ using SegundoParcial.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -104,8 +105,68 @@ namespace SegundoParcial.BLL
 
             try
             {
-                proyectos = contexto.Proyectos = new Contexto();
+                proyectos = contexto.Proyectos.Include(x => x.Detalle)
+                    .Where(x => x.ProyectoId == id)
+                    .SingleOrDefault();
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return proyectos;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                var proyectos = contexto.Proyectos.Find(id);
+
+                if (proyectos !=null)
+                {
+                    contexto.Proyectos.Remove(proyectos);
+                    paso = contexto.SaveChanges() > 0;
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+        public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
+        {
+            List<Proyectos> lista = new List<Proyectos>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                lista = contexto.Proyectos.Where(criterio).ToList();
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return lista;
         }
     }
 }

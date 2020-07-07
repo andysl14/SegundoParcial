@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SegundoParcial.UI.Registros"
         mc:Ignorable="d"
-        Title="rProyectoDetalle" Height="450" Width="560">
+        Title="Proyecto Detalle" Height="500" Width="700">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
 
@@ -28,31 +28,54 @@
                 <Label Content="Descripcion del Proyecto"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="50"/>
 
-
                 <StackPanel Orientation="Vertical">
-                    <GroupBox Header="Detalles de Tareas a Realizar" FontWeight="Bold">
+                    <GroupBox Header="Detalle del proyecto" >
                         <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Tipo de tarea"/>
+                                    <ComboBox x:Name="TipoTareaComboBox" Width="85" Margin="0,0,10,0" />
+                                </StackPanel>
 
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Tipo de Tarea"/>
-                                <ComboBox x:Name="TipoTareaComboBox" Width="100"/>
-                                <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click" Width="123">
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Requerimiento del Proyecto"/>
+                                    <TextBox x:Name="RequerimientoTextBox" Height="20"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Tiempo (minutos)" Margin="5,0" />
+                                    <TextBox x:Name="TiempoTextBox" Height="20" Margin="10,0"  />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="AgregarFilaButton" Click="AgregarFilaButton_Click" Height="30" Margin="10,20">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Resources/plus.png" Height="20"/>
+                                            <Label Content="Agregar fila"/>
+                                        </StackPanel>
+                                    </Button>
+
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Resources/plus.png" Height="20"/>
-                                        <Label Content="Agregar fila"/>
+                                        <Button x:Name="RemoverFilaButton"  Click="RemoverFilaButton_Click" Height="30" Margin="10,20">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/Resources/trash.png" Height="20"/>
+                                                <Label Content="Remover Fila"/>
+                                            </StackPanel>
+
+                                        </Button>
                                     </StackPanel>
-                                </Button>
-                                <Button x:Name="RemoverFilaButton" Margin="10,0" Click="RemoverFilaButton_Click" Width="115">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Resources/trash.png" Height="20"/>
-                                        <Label Content="Eliminar fila"/>
-                                    </StackPanel>
-                                </Button>
+                                </StackPanel>
                             </StackPanel>
 
-                            <DataGrid x:Name="DetalleDataGrid"  Height="80" AutoGenerateColumns="False" >
-                                <DataGrid.Columns>
 
+
+
+                            <DataGrid x:Name="DetalleDataGrid"  Height="100" AutoGenerateColumns="False" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="TipoId" Binding="{Binding TareaId}"/>
+                                    <DataGridTextColumn Header="Tipo Tarea" Binding="{Binding Tareas.Tarea}"/>
+                                    <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
+                                    <DataGridTextColumn Header="Tiempo" Binding="{Binding Tiempo}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 

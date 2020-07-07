@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SegundoParcial.UI.Consultas;
+using SegundoParcial.UI.Registros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,19 @@ namespace SegundoParcial
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ProyectoDetalleMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rProyectoDetalle rProyectoDetalle = new rProyectoDetalle();
+            rProyectoDetalle.Show();
+        }
+
+        private void ConsultaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cConsulta cConsulta = new cConsulta();
+            cConsulta.Show();
+
         }
     }
 }
