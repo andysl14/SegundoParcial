@@ -1,19 +1,19 @@
-﻿<Window x:Class="SegundoParcial.UI.Registros.rDetalle"
+﻿<Window x:Class="SegundoParcial.UI.Registros.rProyectoDetalle"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SegundoParcial.UI.Registros"
         mc:Ignorable="d"
-        Title="rDetalle" Height="480" Width="650">
+        Title="rProyectoDetalle" Height="450" Width="560">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
 
             <StackPanel Orientation="Vertical">
-                <Label Content="Id:"/>
+                <Label Content="Proyecto Id:"/>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="IdTextBox"  Width="100" Height="18" Margin="5,0"/>
+                    <TextBox x:Name="ProyectoIdTextBox"  Width="100" Height="18" Margin="5,0"/>
                     <Button x:Name="BuscarButton" Margin="5,0">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/find.png" Height="20"/>
@@ -22,11 +22,20 @@
                     </Button>
                 </StackPanel>
 
+                <Label Content="Fecha"/>
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}"/>
+
+                <Label Content="Descripcion del Proyecto"/>
+                <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="50"/>
+
+
                 <StackPanel Orientation="Vertical">
-                    <GroupBox Header="Detalles">
+                    <GroupBox Header="Detalles de Tareas a Realizar" FontWeight="Bold">
                         <StackPanel>
 
                             <StackPanel Orientation="Horizontal">
+                                <Label Content="Tipo de Tarea"/>
+                                <ComboBox x:Name="TipoTareaComboBox" Width="100"/>
                                 <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click" Width="123">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/plus.png" Height="20"/>
@@ -43,7 +52,7 @@
 
                             <DataGrid x:Name="DetalleDataGrid"  Height="80" AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
-                                   
+
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -55,28 +64,28 @@
 
             <!--STACK DE BOTONES-->
             <StackPanel Orientation="Horizontal" Margin="0,15" >
-                
+
                 <Button x:Name="NuevoButton" Margin="5,0" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/plus.png" Height="20" />
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>
-                
+
                 <Button x:Name="GuardarButton"   Margin="5,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/floppy-disk.png" Height="20"/>
                         <Label Content="Guardar" />
                     </StackPanel>
                 </Button>
-                
+
                 <Button x:Name="EliminarButton"  Margin="5,0" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/trash.png" Height="20"/>
                         <Label Content="Eliminar" />
                     </StackPanel>
                 </Button>
-                
+
             </StackPanel>
         </StackPanel>
     </Grid>

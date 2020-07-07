@@ -8,10 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\" />
     <Folder Include="DATA\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Entidades\" />
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
 
